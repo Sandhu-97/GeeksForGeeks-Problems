@@ -1,6 +1,7 @@
 class Solution {
   public:
     bool solve(int i, vector<int>& arr, int sum){
+        
         if (sum<0) return false;
         if (i>=arr.size()){
             if (sum==0) return true;
