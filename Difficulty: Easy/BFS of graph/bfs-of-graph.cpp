@@ -4,24 +4,22 @@ class Solution {
     vector<int> bfs(vector<vector<int>> &adj) {
         // Code here
         queue<int> q;
-        vector<bool> visited(adj.size(), false);
-        
-        q.push(0);
+        vector<bool> visited(adj.size());
         vector<int> ans;
+        q.push(0);
         visited[0] = true;
-    
+        
         while (!q.empty()){
             int front = q.front();
             q.pop();
-            for (int v: adj[front]) {
+            ans.push_back(front);
+            
+            for (auto v: adj[front]){
                 if (!visited[v]) {
                     q.push(v);
                     visited[v] = true;
                 }
             }
-            
-            ans.push_back(front);
-            
         }
         
         return ans;
