@@ -1,23 +1,23 @@
 class Solution {
   public:
   
-    void dfs(int u, vector<vector<int>>& adj, vector<int>& ans, vector<bool>& visited){
+    void dfs(int u, vector<vector<int>>& adj, vector<bool>& visited, vector<int>& ans){
         if (visited[u]) return;
-        
-        
-        visited[u] = true;
         ans.push_back(u);
+        visited[u] = true;
         for (auto v: adj[u]){
             if (!visited[v]){
-                dfs(v, adj, ans, visited);
+                dfs(v, adj, visited, ans);
             }
         }
     }
     vector<int> dfs(vector<vector<int>>& adj) {
         // Code here
         vector<int> ans;
-        vector<bool> visited(adj.size(), false);
-        dfs(0, adj, ans, visited);
+        vector<bool> visited(adj.size());
+        dfs(0, adj, visited, ans);
+        
         return ans;
+        
     }
 };
